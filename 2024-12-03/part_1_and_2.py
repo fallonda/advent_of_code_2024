@@ -23,10 +23,15 @@ def get_sum(list_of_mul_patterns: list) -> int:
 # Answer part 1
 print(get_sum(mul_patterns))
 
+
 # Part 2
+# Get the non-greedy bit working
+test_input = "do()asdfdon't();ldo(),mnbdon't()kjdo()w\nertdon't()do()againdon't()"
+re.findall(pattern="do\\(\\)([\s\S]+?)don't\\(\\)", string=test_input)
+
 # Append do() and don't() to input txt
 pt2_input = "do()" + input_txt + "don't()"
-pt2_patterns = re.findall(pattern="do\\(\\)(.*)don't\\(\\)", string=pt2_input)
+pt2_patterns = re.findall(pattern="do\\(\\)([\s\S]+?)don't\\(\\)", string=pt2_input)
 pt2_patterns_one_string = "".join(pt2_patterns)
 pt2_mul_patterns = re.findall(
     pattern="mul\\(\d{1,3},\d{1,3}\\)", string=pt2_patterns_one_string
